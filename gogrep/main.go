@@ -34,6 +34,7 @@ var args struct {
 
 func main() {
 	fmt.Printf("\n\tBOLLOCKS!\n")
+
 	arg.MustParse(&args)
 
 	var workersWg sync.WaitGroup
