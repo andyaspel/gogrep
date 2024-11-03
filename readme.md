@@ -8,10 +8,9 @@ within files. It must auto-recurse into subdirectories.
 
 ## gogrep
 - make project directory & git init
--  
+- add external packages 
 
-    -  
-    -  
-    -  
-    - 
-    - 
+    -  added basic grep functionality
+    -  need to add tests
+    -  add more features
+ 
