@@ -1,0 +1,14 @@
+ You can see floating-point imprecision on display here too.
+ In case you were wondering what the fifth kind of primitive literal was, Go supports
+ imaginary literals to represent the imaginary portion of a complex number. They look
+ just like floating-point literals, but they have an i for a suffix.
+ Despite having complex numbers as a predeclared type, Go is not a popular language
+ for numerical computing. Adoption has been limited because other features (like
+ matrix support) are not part of the language and libraries have to use inefficient
+ replacements, like slices of slices. (You’ll look at slices in Chapter 3 and how they are
+ implemented in Chapter 6.) But if you need to calculate a Mandelbrot set as part of a
+ larger program, or implement a quadratic equation solver, complex number support is there for you.
+ You might be wondering why Go includes complex numbers. The answer is simple:
+ Ken Thompson, one of the creators of Go (and Unix), thought they would be interesting. 
+ There has been discussion about removing complex numbers from a future
+ version of Go, but it’s easier to just ignore the feature
