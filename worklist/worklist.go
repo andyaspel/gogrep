@@ -1,5 +1,7 @@
 package worklist
 
+//* entry into channel
+
 type Entry struct {
 	Path string
 }
@@ -23,6 +25,8 @@ func New(bufSize int) Worklist {
 func NewJob(path string) Entry {
 	return Entry{path}
 }
+
+//* close chanels
 
 func (w *Worklist) Finalize(nWorkers int) {
 	for i := 0; i < nWorkers; i++ {

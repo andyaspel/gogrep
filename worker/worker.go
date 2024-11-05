@@ -20,6 +20,9 @@ func NewResult(line string, lineNr int, path string) Result {
 	return Result{line, lineNr, path}
 }
 
+/* this is where I have to add functionality
+   that implements various search patterns */
+
 func FindInFile(path string, find string) *Results {
 	file, err := os.Open(path)
 	if err != nil {
