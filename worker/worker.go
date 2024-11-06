@@ -30,6 +30,7 @@ func FindInFile(path string, find string) *Results {
 		return nil
 	}
 	results := Results{make([]Result, 0)}
+
 	scanner := bufio.NewScanner(file)
 	lineNr := 1
 	for scanner.Scan() {
@@ -39,6 +40,7 @@ func FindInFile(path string, find string) *Results {
 		}
 		lineNr += 1
 	}
+
 	if len(results.Inner) == 0 {
 		return nil
 	} else {

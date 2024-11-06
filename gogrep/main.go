@@ -46,6 +46,7 @@ func main() {
 	go func() {
 		defer workersWg.Done()
 		discoverDirs(&wl, args.SearchDir)
+		fmt.Printf("SearchDir:\t %v", args.SearchDir)
 		wl.Finalize(nrWorkers)
 	}()
 	for i := 0; i < nrWorkers; i++ {
@@ -56,8 +57,14 @@ func main() {
 				workEntry := wl.Next()
 				if workEntry.Path != "" {
 					workerResult := worker.FindInFile(workEntry.Path, args.SearchTerm)
+
 					if workerResult != nil {
+						fmt.Printf("workEntry: %v", workEntry)
+
+						fmt.Printf("workerResult:\t %v", workerResult)
 						for _, r := range workerResult.Inner {
+							fmt.Printf("SearchTerm:\t %v\nr\t %v", args.SearchTerm, r)
+
 							results <- r
 						}
 					}
@@ -79,7 +86,7 @@ func main() {
 		for {
 			select {
 			case r := <-results:
-				fmt.Printf("\t%v[%v]:%v\n", r.Path, r.LineNr, r.Line)
+				fmt.Printf("\t%v [%v]:  %v\n", r.Path, r.LineNr, r.Line)
 			case <-blockWorkersWg:
 				if len(results) == 0 {
 					displayWg.Done()
